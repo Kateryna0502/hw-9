@@ -1,5 +1,5 @@
 const API = "http://www.omdbapi.com";
-const key = "888cc6de";
+const key = "2091a816";
 const ENDPOINT = `${API}/?apikey=${key}`;
 const searchBtn = document.getElementById("searchBtn");
 const form = document.getElementById("form");
