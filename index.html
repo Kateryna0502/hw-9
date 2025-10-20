@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" defer></script>
+    <title>AJAX films</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <form id="form" action="">
+      <fieldset>
+        <legend>Enter the movie title and choose a category</legend>
+        <input name="query" type="text" />
+        <select name="category">
+          <option value="" selected>All</option>
+          <option value="movie">movies</option>
+          <option value="series">series</option>
+          <option value="episode">episodes</option>
+        </select>
+      </fieldset>
+      <button id="searchBtn">Search</button>
+    </form>
+    <ul id="list"></ul>
+    <button id="moreBtn" hidden>Load more</button>
+    <dialog id="filmDetails" closedby="any">
+      <div id="filmDetailsContainer">
+        <button id="closeDetails">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            />
+          </svg>
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>
