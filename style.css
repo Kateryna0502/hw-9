@@ -113,17 +113,17 @@ option {
 #moreBtn,
 button {
   margin: 0 auto;
-  font-size: 18px;
-  border-radius: 15px;
-  border: 1px solid #737373;
+  background-color: orange;
+  color: black;
   padding: 10px 20px;
-  background: linear-gradient(#e6e1e1, #757575);
+  font-size: 1.2em;
   cursor: pointer;
-  color: #ffffff;
-  transition: 0.5s;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  border: 1px solid orange;
 
   &:hover {
-    color: #000000;
+    background-color: white;
   }
 
   &:not([hidden]) {
