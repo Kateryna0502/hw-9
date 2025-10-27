@@ -7,21 +7,21 @@ const list = document.getElementById("list");
 const moreBtn = document.getElementById("moreBtn");
 const filmDetails = document.getElementById("filmDetails");
 const closeDetails = document.getElementById("closeDetails");
-const filmDetailsContainer = document.getElementById("filmDetailsContainer")
+const filmDetailsContainer = document.getElementById("filmDetailsContainer");
 let pages = 0;
 let page = 1;
 
 searchBtn.onclick = async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(form))
+  const data = Object.fromEntries(new FormData(form));
   const query = form.query.value.trim();
   const type = form.category.value;
   if (!query) return;
   page = 1;
   const { films, total } = await searchFilms(query, type, page);
   showFilms(films, true);
-  updateMoreBtn(total)
-}
+  updateMoreBtn(total);
+};
 
 list.onclick = async (e) => {
   const li = e.target.closest("li");
@@ -32,7 +32,7 @@ list.onclick = async (e) => {
   const film = await getFilmDetails(id);
 
   showFilm(film);
-}
+};
 
 async function searchFilms(query, type, page = 1) {
   try {
@@ -68,7 +68,9 @@ function showFilm(film) {
   const img = list.querySelector(`[data-id=${film.imdbID}] img`);
 
   filmDetailsContainer.replaceChildren(closeDetails);
-  filmDetailsContainer.insertAdjacentHTML("beforeend", `
+  filmDetailsContainer.insertAdjacentHTML(
+    "beforeend",
+    `
     <div>
       <h2 class="detailsTitle">${film.Title}</h2>
       <h3 class="detailsName">Actors</h3>
@@ -86,12 +88,13 @@ function showFilm(film) {
       <h3 class="detailsName">Language</h3>
       <p class="detailsDescription">${film.Language}</p>
     </div>
-  `);
-  filmDetailsContainer.insertAdjacentElement("afterbegin", img.cloneNode(true))
+  `
+  );
+  filmDetailsContainer.insertAdjacentElement("afterbegin", img.cloneNode(true));
 
   closeDetails.onclick = () => {
-    filmDetails.close()
-  }
+    filmDetails.close();
+  };
   filmDetails.showModal();
 }
 
@@ -101,23 +104,20 @@ function showFilms(films, newQuery = false) {
   }
 
   if (films?.length) {
-    films.forEach(film => {
-      list.innerHTML +=
-        `<li class="movie" data-id=${film.imdbID}>
+    films.forEach((film) => {
+      list.innerHTML += `<li class="movie" data-id=${film.imdbID}>
           <img class="moviePoster" src="${film.Poster}" alt="">
           <h3 class="movieTitle">${film.Title}</h3>
           <p class="movieYear">${film.Year}</p>
         </li>`;
-    })
+    });
     if (page == 1) {
-      list.scrollIntoView(
-        {
-          behavior: "smooth",
-        }
-      )
+      list.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   } else if (newQuery) {
-    list.innerHTML = "No films found"
+    list.innerHTML = "No films found";
   }
 }
 
@@ -131,5 +131,5 @@ function updateMoreBtn(total) {
     showFilms(films);
     updateMoreBtn(total);
     // moreBtn.scrollIntoView();
-  }
+  };
 }
